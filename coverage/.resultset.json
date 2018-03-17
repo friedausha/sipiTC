@@ -1,0 +1,47 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/frieda/Repository/sipi/app/models/admin.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/frieda/Repository/sipi/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/frieda/Repository/sipi/app/models/computer.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/frieda/Repository/sipi/app/models/laboratory.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/frieda/Repository/sipi/app/models/user.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/home/frieda/Repository/sipi/app/models/reservation.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1521303507
+  }
+}

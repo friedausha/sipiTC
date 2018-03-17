@@ -1,0 +1,39 @@
+AllCops:
+  TargetRubyVersion: 2.2
+  Exclude:
+    - '**/vendor/**/*'
+    - '**/config/**/*'
+    - '**/db/**/*'
+    - '**/bin/**/*'
+    - 'Rakefile'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/spec/**/*'
+
+Metrics/LineLength:
+  Exclude:
+    - '**/spec/spec_helper.rb'
+    - '**/spec/rails_helper.rb'
+
+Style/BlockComments:
+  Exclude:
+    - '**/spec/spec_helper.rb'
+
+EndOfLine:
+  Enabled: false
+
+# Layout/EndOfLine:
+#   EnforcedStyle: native
+
+Style/GlobalVars:
+  AllowedVariables:
+    - $redis
+# Layout/EndOfLine:
+  # EnforcedStyle: crlf
+#
+#  Style/EndOfLine:
+#   EnforcedStyle: lf

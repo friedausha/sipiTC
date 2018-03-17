@@ -1,0 +1,11 @@
+IrresponsibleModule:
+  enabled: false
+
+"app/jobs":
+  UtilityFunction:
+    enabled: false
+
+exclude_paths:
+  - config
+  - db
+  - spec
