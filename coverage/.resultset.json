@@ -1,6 +1,24 @@
 {
   "RSpec": {
     "coverage": {
+      "/home/frieda/Repository/sipi/app/mailers/admins_mailer.rb": [
+        1,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null
+      ],
+      "/home/frieda/Repository/sipi/app/mailers/users_mailer.rb": [
+        1,
+        1,
+        2,
+        2,
+        null,
+        null
+      ],
       "/home/frieda/Repository/sipi/app/models/admin.rb": [
         1,
         1,
@@ -34,6 +52,19 @@
         1,
         null
       ],
+      "/home/frieda/Repository/sipi/app/services/reservation_updater.rb": [
+        1,
+        null,
+        1,
+        1,
+        2,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/home/frieda/Repository/sipi/app/models/reservation.rb": [
         1,
         1,
@@ -42,6 +73,6 @@
         null
       ]
     },
-    "timestamp": 1521330203
+    "timestamp": 1521339154
   }
 }
