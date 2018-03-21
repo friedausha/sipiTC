@@ -52,6 +52,24 @@
         1,
         null
       ],
+      "/home/frieda/Repository/sipi/app/services/registrar.rb": [
+        1,
+        null,
+        1,
+        4,
+        4,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
       "/home/frieda/Repository/sipi/app/services/reservation_updater.rb": [
         1,
         null,
@@ -73,6 +91,6 @@
         null
       ]
     },
-    "timestamp": 1521339154
+    "timestamp": 1521634337
   }
 }
