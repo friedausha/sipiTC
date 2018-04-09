@@ -3,4 +3,9 @@ class UsersMailer < ApplicationMailer
     @user = user
     mail(to: user.email, subject: 'PC Reservation')
   end
+
+  def reservation_rejected_email(user:)
+    @user = user
+    mail(to: user.email, subject: 'PC Reservation')
+  end
 end

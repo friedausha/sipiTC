@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180317152021) do
 
-  create_table "admins", force: :cascade do |t|
-    t.integer  "laboratory_id", null: false
-    t.string   "name",          null: false
-    t.string   "nrp",           null: false
-    t.string   "email",         null: false
-    t.string   "phone_number",  null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["laboratory_id"], name: "index_admins_on_laboratory_id"
-  end
-
   create_table "computers", force: :cascade do |t|
     t.integer  "laboratory_id",       null: false
     t.integer  "number",              null: false
@@ -38,19 +27,21 @@ ActiveRecord::Schema.define(version: 20180317152021) do
 
   create_table "laboratories", force: :cascade do |t|
     t.string   "name",       null: false
+    t.string   "email",      null: false
+    t.string   "password",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.integer  "computer_id", null: false
-    t.string   "reason",      null: false
-    t.integer  "status",      null: false
-    t.datetime "start_date",  null: false
-    t.datetime "end_date",    null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "user_id",                 null: false
+    t.integer  "computer_id",             null: false
+    t.string   "reason",                  null: false
+    t.integer  "status",      default: 0, null: false
+    t.datetime "start_date",              null: false
+    t.datetime "end_date",                null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["computer_id"], name: "index_reservations_on_computer_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

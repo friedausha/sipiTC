@@ -1,5 +1,10 @@
 class Reservation < ApplicationRecord
-  validates :reason, :status, :start_date, :end_date, presence: true
+  validates :reason, :status, :user_id, :computer_id, :start_date, :end_date,
+            presence: true
   belongs_to :user
   belongs_to :computer
+
+  def update_status(status: )
+    self.update_attributes!(status: status)
+  end
 end
