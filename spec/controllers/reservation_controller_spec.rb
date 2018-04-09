@@ -12,7 +12,7 @@ RSpec.describe ReservationController, type: :controller do
 
   let(:user) { create :user, nrp: nrp, email: email, phone_number: phone_number,
                 name: name }
-  let(:computer) { create :computer }
+  let(:computer) { create :computer, laboratory: laboratory }
   let(:start_date) { Faker::Date.between(2.years.ago, 2.weeks.ago) }
   let(:end_date) { Faker::Date.between(1.week.ago, Date.today + 1.week) }
   let(:reason) { Faker::Lorem.characters }
@@ -29,6 +29,10 @@ RSpec.describe ReservationController, type: :controller do
   end
   describe '#create' do
     it 'calls Registrar and creates new user and reservation' do
+      mailer = double
+      expect(AdminsMailer).to receive(:new_reservation_email)
+        .with(laboratory: laboratory).and_return(mailer)
+      expect(mailer).to receive(:deliver_now)
       post :create, params: params
 
       user = User.find_by(nrp: nrp)
@@ -38,8 +42,6 @@ RSpec.describe ReservationController, type: :controller do
       reservation = Reservation.find_by(computer: computer)
       expect(reservation.user).to eq(user)
       expect(reservation.computer).to eq(computer)
-      # expect(AdminsMailer).to receive(:new_reservation_email)
-      #   .with(computer.laboratory)
     end
   end
 
@@ -47,6 +49,10 @@ RSpec.describe ReservationController, type: :controller do
     it 'updates reservation status' do
       computer = create :computer, laboratory: laboratory
       reservation = create :reservation, computer: computer
+      mailer = double
+      expect(UsersMailer).to receive(:reservation_accepted_email)
+        .with(user: reservation.user).and_return(mailer)
+      expect(mailer).to receive(:deliver_now)
       params = {
         'id' => reservation.id,
         'status' => '1'
@@ -62,6 +68,10 @@ RSpec.describe ReservationController, type: :controller do
     it 'doesnt update anything' do
       computer = create :computer, laboratory: laboratory
       reservation = create :reservation, computer: computer
+      mailer = double
+      expect(UsersMailer).to receive(:reservation_rejected_email)
+        .with(user: reservation.user).and_return(mailer)
+      expect(mailer).to receive(:deliver_now)
       params = {
         'id' => reservation.id,
         'status' => '2'
