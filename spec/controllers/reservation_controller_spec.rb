@@ -58,4 +58,18 @@ RSpec.describe ReservationController, type: :controller do
       expect(computer.reload.reservation_started).to eq(reservation.start_date)
     end
   end
+  context 'status not accepted' do
+    it 'doesnt update anything' do
+      computer = create :computer, laboratory: laboratory
+      reservation = create :reservation, computer: computer
+      params = {
+        'id' => reservation.id,
+        'status' => '2'
+      }
+      request.headers.merge!headers
+      put :update, params: params
+
+      expect(computer.reload.status).to eq(2)
+    end
+  end
 end

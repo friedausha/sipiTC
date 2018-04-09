@@ -33,13 +33,15 @@ class ReservationController < ApplicationController
 
     reservation = Reservation.find_by(id: params['id'])
     reservation.update_status(status: params['status'])
+    computer = reservation.computer
     if params['status'] == '1'
-        UsersMailer.reservation_accepted_email(user: reservation.user)
-        computer = reservation.computer
+        UsersMailer.reservation_accepted_email(user: reservation.user).deliver_now
         computer.change_status(status: 1)
         computer.change_available_dates(reservation_started: reservation.start_date,
                                         reservation_ended: reservation.end_date)
-    else UsersMailer.reservation_rejected_email(user: reservation.user).deliver_now
+    else
+      computer.change_status(status: params['status'])
+      UsersMailer.reservation_rejected_email(user: reservation.user).deliver_now
     end
     return render json: { status: 200 }
   end
