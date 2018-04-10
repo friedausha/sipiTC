@@ -1,5 +1,5 @@
 class Computer < ApplicationRecord
-  validates :number, :laboratory_id, :spec, :status, presence: true
+  validates :number, :laboratory_id, :name, :spec, :status, presence: true
   belongs_to :laboratory
   has_many :reservations
 
@@ -8,7 +8,7 @@ class Computer < ApplicationRecord
                       reservation_ended: reservation_ended)
   end
 
-  def self.list_available
-    Computer.where(status: 0).all
+  def self.list_available(date: )
+    Computer.where('status = ? or reservation_ended <=?', 0, date).all
   end
 end

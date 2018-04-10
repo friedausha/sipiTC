@@ -5,6 +5,7 @@ class CreateComputers < ActiveRecord::Migration[5.0]
       t.integer :number, null: false, unique: true
       t.string :spec, null: false
       t.string :note
+      t.string :name, null: false
       t.datetime :reservation_started
       t.datetime :reservation_ended
       t.integer :status, null: false

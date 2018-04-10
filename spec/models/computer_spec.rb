@@ -5,6 +5,7 @@ RSpec.describe Computer, type: :model do
   it { should validate_presence_of(:number) }
   it { should validate_presence_of(:spec) }
   it { should validate_presence_of(:status) }
+  it { should validate_presence_of(:name) }
   it { should belong_to(:laboratory) }
   it { should have_many(:reservations) }
 
@@ -27,9 +28,11 @@ RSpec.describe Computer, type: :model do
       create :computer
       create :computer
       create :computer
+      create :computer, reservation_ended: Date.tomorrow, status: 1
+      create :computer, reservation_ended: Date.yesterday, status: 1
 
-      list = Computer.list_available
-      expect(list.length).to eq(3)
+      list = Computer.list_available(date: Date.today)
+      expect(list.length).to eq(4)
     end
   end
 end

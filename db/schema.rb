@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180317152021) do
     t.integer  "number",              null: false
     t.string   "spec",                null: false
     t.string   "note"
+    t.string   "name",                null: false
     t.datetime "reservation_started"
     t.datetime "reservation_ended"
     t.integer  "status",              null: false
