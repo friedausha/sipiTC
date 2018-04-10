@@ -8,15 +8,6 @@ RSpec.describe Computer, type: :model do
   it { should belong_to(:laboratory) }
   it { should have_many(:reservations) }
 
-  describe '#change_status' do
-    it 'updates status' do
-      computer = create :computer
-      status = Random.rand(1..1000)
-      computer.change_status(status: status)
-      expect(computer.reload.status).to eq(status)
-    end
-  end
-
   describe '#change_available_dates' do
     it 'change reservation start and end' do
       start_date = Faker::Date.between(2.weeks.ago, Date.today)
@@ -39,19 +30,6 @@ RSpec.describe Computer, type: :model do
 
       list = Computer.list_available
       expect(list.length).to eq(3)
-    end
-  end
-
-  describe '#change_spec_and_note' do
-    it 'changes spec and note' do
-      spec = Faker::Lorem.characters
-      note = Faker::Lorem.characters
-
-      computer = create :computer
-      computer.change_spec_and_note(spec: spec, note: note)
-
-      expect(computer.reload.spec).to eq(spec)
-      expect(computer.reload.note).to eq(note)
     end
   end
 end
