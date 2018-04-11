@@ -21,7 +21,7 @@ RSpec.describe ReservationController, type: :controller do
     'email' => email,
     'phone_number' => phone_number,
     'name' => name,
-    'computer' => "#{computer.id}",
+    'computer' => "#{computer.name}",
     'start_date' => start_date,
     'end_date' => end_date,
     'reason' => reason

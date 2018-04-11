@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 20180317152021) do
 
   create_table "computers", force: :cascade do |t|
     t.integer  "laboratory_id",       null: false
-    t.integer  "number",              null: false
     t.string   "spec",                null: false
     t.string   "note"
     t.string   "name",                null: false

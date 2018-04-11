@@ -1,5 +1,18 @@
 class ComputerController < ApplicationController
   def create
+    permitted = Authenticator.new(authorization:
+      request.headers['Authorization']).permitted?
+    return render json: { status: 403 } unless permitted
+
+    laboratory = Laboratory.find_by(name: params['laboratory'])
+    return render json: { status: 404 } unless laboratory
+
+    return render json: { status: 404 } unless params['name'] && params['spec']
+    Computer.create!(laboratory_id: laboratory.id, name: params['name'],
+    spec: params['spec'], status: 0)
+    computer = Computer.find_by(name: params['name'])
+    computer.update_attributes(note: params['note']) if params['note']
+    return render json: { status: 200 }
   end
 
   def show

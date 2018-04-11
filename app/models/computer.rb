@@ -1,5 +1,5 @@
 class Computer < ApplicationRecord
-  validates :number, :laboratory_id, :name, :spec, :status, presence: true
+  validates :laboratory_id, :name, :spec, :status, presence: true
   belongs_to :laboratory
   has_many :reservations
 

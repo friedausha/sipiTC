@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :computer do
-    number { Faker::Lorem.characters }
     spec { Faker::Lorem.characters }
     note { Faker::Lorem.sentence }
     name { Faker::Lorem.characters }

@@ -11,7 +11,7 @@ class ReservationController < ApplicationController
       user_attributes)
       user = User.find_by(nrp: params['nrp'])
       return render json: {status: 400} unless user
-      computer = Computer.find_by!(id: params['computer'])
+      computer = Computer.find_by!(name: params['computer'])
       reservation_attributes = {
         user: user,
         computer: computer,

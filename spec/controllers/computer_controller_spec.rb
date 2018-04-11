@@ -5,6 +5,30 @@ RSpec.describe ComputerController, type: :controller do
   let(:headers) do
     { 'Authorization' => "#{laboratory.name}" + ':' + "#{laboratory.password}" }
   end
+
+  describe '#create' do
+    it 'creates new computer' do
+      note = Faker::Lorem.characters
+      laboratory = create :laboratory
+      computer = build :computer, laboratory: laboratory
+      params = {
+        'laboratory' => laboratory.name,
+        'spec' => computer.spec,
+        'name' => computer.name,
+        'note' => note
+      }
+      request.headers.merge!headers
+
+      post :create, params: params
+
+      res = Computer.where(name: computer.name).first
+      p res
+      expect(res.spec).to eq(computer.spec)
+      expect(res.note).to eq(note)
+      expect(res.status).to eq(0)
+      expect(res.reservation_ended).to eq(nil)
+    end
+  end
   describe '#show' do
     it 'shows certain computer' do
       computer = create :computer
