@@ -13,6 +13,13 @@ gem 'rails', '~> 5.0.0'
 gem 'sidekiq'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'whenever', require: false
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'brakeman', require: false

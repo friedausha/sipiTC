@@ -22,7 +22,6 @@ RSpec.describe ComputerController, type: :controller do
       post :create, params: params
 
       res = Computer.where(name: computer.name).first
-      p res
       expect(res.spec).to eq(computer.spec)
       expect(res.note).to eq(note)
       expect(res.status).to eq(0)

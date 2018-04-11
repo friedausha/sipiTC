@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   resources :reservation, only: [:create,:update]
   resources :computer, only: [:create, :show, :update, :destroy]
-
+  resources :laboratory
+  
   match '*path', to: 'application#route_not_found',
                  via: :all,
                  as: 'route_not_found'
