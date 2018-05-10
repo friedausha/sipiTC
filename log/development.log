@@ -1898,3 +1898,12 @@ FOREIGN KEY ("computer_id")
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2018-05-10 18:44:09 +0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /home/frieda/.rvm/gems/ruby-2.4.1/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/frieda/.rvm/gems/ruby-2.4.1/gems/railties-5.0.6/lib/rails/templates/rails/welcome/index.html.erb (6.2ms)
+Completed 200 OK in 64ms (Views: 29.7ms | ActiveRecord: 0.0ms)
+
+

@@ -30,9 +30,9 @@ RSpec.describe ReservationController, type: :controller do
   describe '#create' do
     it 'calls Registrar and creates new user and reservation' do
       mailer = double
-      expect(AdminsMailer).to receive(:new_reservation_email)
-        .with(laboratory: laboratory).and_return(mailer)
-      expect(mailer).to receive(:deliver_now)
+      # expect(AdminsMailer).to receive(:new_reservation_email)
+      #   .with(laboratory: laboratory).and_return(mailer)
+      # expect(mailer).to receive(:deliver_now)
       post :create, params: params
 
       user = User.find_by(nrp: nrp)
@@ -50,9 +50,9 @@ RSpec.describe ReservationController, type: :controller do
       computer = create :computer, laboratory: laboratory
       reservation = create :reservation, computer: computer
       mailer = double
-      expect(UsersMailer).to receive(:reservation_accepted_email)
-        .with(user: reservation.user).and_return(mailer)
-      expect(mailer).to receive(:deliver_now)
+      # expect(UsersMailer).to receive(:reservation_accepted_email)
+      #   .with(user: reservation.user).and_return(mailer)
+      # expect(mailer).to receive(:deliver_now)
       params = {
         'id' => reservation.id,
         'status' => '1'
@@ -69,9 +69,9 @@ RSpec.describe ReservationController, type: :controller do
       computer = create :computer, laboratory: laboratory
       reservation = create :reservation, computer: computer
       mailer = double
-      expect(UsersMailer).to receive(:reservation_rejected_email)
-        .with(user: reservation.user).and_return(mailer)
-      expect(mailer).to receive(:deliver_now)
+      # expect(UsersMailer).to receive(:reservation_rejected_email)
+      #   .with(user: reservation.user).and_return(mailer)
+      # expect(mailer).to receive(:deliver_now)
       params = {
         'id' => reservation.id,
         'status' => '2'

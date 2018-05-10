@@ -22,7 +22,7 @@ class ReservationController < ApplicationController
       reservation = registrar.register_reservation(reservation_attributes:
       reservation_attributes)
       return render json: { status: 400} unless reservation.valid?
-      AdminsMailer.new_reservation_email(laboratory: computer.laboratory).deliver_now
+      Mailers.new.new_reservation_email(computer.laboratory)
       render json: { status: 200 }
   end
 
@@ -35,13 +35,13 @@ class ReservationController < ApplicationController
     reservation.update_status(status: params['status'])
     computer = reservation.computer
     if params['status'] == '1'
-        UsersMailer.reservation_accepted_email(user: reservation.user).deliver_now
+        # UsersMailer.reservation_accepted_email(user: reservation.user).deliver_now
         computer.update_attributes!(status: 1)
         computer.change_available_dates(reservation_started: reservation.start_date,
                                         reservation_ended: reservation.end_date)
     else
       computer.update_attributes!(status: params['status'])
-      UsersMailer.reservation_rejected_email(user: reservation.user).deliver_now
+      # UsersMailer.reservation_rejected_email(user: reservation.user).deliver_now
     end
     return render json: { status: 200 }
   end
