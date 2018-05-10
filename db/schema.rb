@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180317152021) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "computers", force: :cascade do |t|
     t.integer  "laboratory_id",       null: false
     t.string   "spec",                null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180317152021) do
     t.integer  "status",              null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.index ["laboratory_id"], name: "index_computers_on_laboratory_id"
+    t.index ["laboratory_id"], name: "index_computers_on_laboratory_id", using: :btree
   end
 
   create_table "laboratories", force: :cascade do |t|
@@ -42,8 +45,8 @@ ActiveRecord::Schema.define(version: 20180317152021) do
     t.datetime "end_date",                null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.index ["computer_id"], name: "index_reservations_on_computer_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.index ["computer_id"], name: "index_reservations_on_computer_id", using: :btree
+    t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

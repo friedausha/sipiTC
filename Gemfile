@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 source 'https://rubygems.org'
 
 gem 'active_model_serializers', '~> 0.10'
-gem 'sqlite3'
+gem 'pg', '~> 0.18'
 gem 'bcrypt'
 gem 'httpclient'
 gem 'jar-dependencies', '0.3.10'
@@ -30,6 +30,7 @@ group :development, :test do
   gem 'pry'
   gem 'reek'
   gem 'rubocop', require: false
+  gem 'sendgrid-ruby'
 end
 
 group :development do
