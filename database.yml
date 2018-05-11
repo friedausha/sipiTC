@@ -19,5 +19,7 @@ production:
   encoding: unicode
   database: dbf4k6e1bpnrvf
   pool: 5
+  host: ec2-50-19-224-165.compute-1.amazonaws.com
   username: shmjphassuynlk
   password: d72b9b006c2f21bb7cc6777c9cd0a4f3cee33aea0d4d5b54c5a1d5a76bed8743
+  port: 5432
