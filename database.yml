@@ -17,8 +17,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: sipi_production
+  database: dbf4k6e1bpnrvf
   pool: 5
-  username: sipi
-  password: sipi1
-
+  username: shmjphassuynlk
+  password: d72b9b006c2f21bb7cc6777c9cd0a4f3cee33aea0d4d5b54c5a1d5a76bed8743
