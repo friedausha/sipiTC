@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 source 'https://rubygems.org'
 
+ruby '2.4.1'
+
 gem 'active_model_serializers', '~> 0.10'
 gem 'pg', '~> 0.18'
 gem 'bcrypt'
@@ -20,6 +22,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'bootstrap-sass'
+gem 'sendgrid-ruby'
 
 group :development, :test do
   gem 'brakeman', require: false
@@ -30,7 +33,6 @@ group :development, :test do
   gem 'pry'
   gem 'reek'
   gem 'rubocop', require: false
-  gem 'sendgrid_ruby'
 end
 
 group :development do
