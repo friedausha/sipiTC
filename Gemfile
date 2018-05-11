@@ -30,7 +30,7 @@ group :development, :test do
   gem 'pry'
   gem 'reek'
   gem 'rubocop', require: false
-  gem 'sendgrid-ruby'
+  gem 'sendgrid_ruby'
 end
 
 group :development do
