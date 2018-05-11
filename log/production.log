@@ -1,0 +1,36 @@
+D, [2018-05-12T01:28:48.814842 #8902] DEBUG -- :   [1m[35m (243.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4215556693904986185);[0m
+D, [2018-05-12T01:28:49.328747 #8902] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (247.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2018-05-12T01:28:49.842434 #8902]  INFO -- : Migrating to CreateLaboratories (20180317152007)
+D, [2018-05-12T01:28:50.089268 #8902] DEBUG -- :   [1m[35m (243.3ms)[0m  [1m[35mBEGIN[0m
+D, [2018-05-12T01:28:50.382361 #8902] DEBUG -- :   [1m[35m (291.4ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+D, [2018-05-12T01:28:50.631632 #8902] DEBUG -- :   [1m[35mSQL (246.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
+D, [2018-05-12T01:28:50.876619 #8902] DEBUG -- :   [1m[35m (244.2ms)[0m  [1m[35mCOMMIT[0m
+I, [2018-05-12T01:28:50.876916 #8902]  INFO -- : Migrating to CreateComputers (20180317152021)
+D, [2018-05-12T01:28:51.121754 #8902] DEBUG -- :   [1m[35m (243.4ms)[0m  [1m[35mBEGIN[0m
+D, [2018-05-12T01:28:51.384934 #8902] DEBUG -- :   [1m[35m (261.0ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
+FOREIGN KEY ("laboratory_id")
+  REFERENCES "laboratories" ("id")
+)[0m
+D, [2018-05-12T01:28:52.124872 #8902] DEBUG -- :   [1m[35m (247.7ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+D, [2018-05-12T01:28:52.370980 #8902] DEBUG -- :   [1m[35mSQL (244.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152021"]]
+D, [2018-05-12T01:28:52.616140 #8902] DEBUG -- :   [1m[35m (244.5ms)[0m  [1m[35mCOMMIT[0m
+I, [2018-05-12T01:28:52.616421 #8902]  INFO -- : Migrating to CreateReservations (20180317152453)
+D, [2018-05-12T01:28:52.860733 #8902] DEBUG -- :   [1m[35m (243.0ms)[0m  [1m[35mBEGIN[0m
+D, [2018-05-12T01:28:53.364382 #8902] DEBUG -- :   [1m[35m (257.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+D, [2018-05-12T01:28:53.612547 #8902] DEBUG -- :   [1m[35m (246.9ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
+FOREIGN KEY ("computer_id")
+  REFERENCES "computers" ("id")
+[0m
+D, [2018-05-12T01:28:54.349470 #8902] DEBUG -- :   [1m[35m (246.5ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations"  ("computer_id")[0m
+D, [2018-05-12T01:28:54.601143 #8902] DEBUG -- :   [1m[35m (250.6ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+D, [2018-05-12T01:28:55.339051 #8902] DEBUG -- :   [1m[35m (247.7ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations"  ("user_id")[0m
+D, [2018-05-12T01:28:55.588673 #8902] DEBUG -- :   [1m[35mSQL (247.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152453"]]
+D, [2018-05-12T01:28:55.836008 #8902] DEBUG -- :   [1m[35m (246.6ms)[0m  [1m[35mCOMMIT[0m
+D, [2018-05-12T01:28:56.822414 #8902] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (244.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+D, [2018-05-12T01:28:57.324889 #8902] DEBUG -- :   [1m[35m (248.5ms)[0m  [1m[35mBEGIN[0m
+D, [2018-05-12T01:28:57.571688 #8902] DEBUG -- :   [1m[35mSQL (244.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "production"], ["created_at", "2018-05-11 18:28:57.325590"], ["updated_at", "2018-05-11 18:28:57.325590"]]
+D, [2018-05-12T01:28:57.816848 #8902] DEBUG -- :   [1m[35m (244.4ms)[0m  [1m[35mCOMMIT[0m
+D, [2018-05-12T01:28:58.061359 #8902] DEBUG -- :   [1m[35m (243.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(4215556693904986185)[0m

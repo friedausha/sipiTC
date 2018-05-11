@@ -1,8 +1,8 @@
 class CreateReservations < ActiveRecord::Migration[5.0]
   def change
     create_table :reservations do |t|
-      t.string :user_id, null: false
-      t.string :computer_id, null: false
+      t.integer :user_id, null: false
+      t.integer :computer_id, null: false
       t.string :reason, null: false
       t.integer :status, null: false, default: 0
       t.datetime :start_date, null: false
