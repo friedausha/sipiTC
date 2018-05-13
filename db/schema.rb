@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20180317152453) do
     t.string   "spec",                null: false
     t.string   "note"
     t.string   "name",                null: false
-    t.datetime "reservation_started"
-    t.datetime "reservation_ended"
+    t.date     "reservation_started"
+    t.date     "reservation_ended"
     t.integer  "status",              null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
