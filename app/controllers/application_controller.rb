@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
   private
 
   def record_not_found(exception)
-    render json: exception, status: :not_found
+    render json: [], status: :not_found
   end
 
   def internal_server_error(exception)
-    render json: exception, status: :internal_server_error
+    render json: [], status: :internal_server_error
   end
 end
