@@ -8,5 +8,5 @@
 ncc = Laboratory.create(name: 'NCC', email: 'ncc@if.its.ac.id', password: 'ncc')
 Laboratory.create(name: 'KCV', email: 'kcv@if.its.ac.id', password: 'kcv')
 Laboratory.create(name: 'RPL', email: 'rpl@if.its.ac.id', password: 'rpl')
-Computer.create(laboratory: ncc, name: 'computer 021', status: 0, id: 1)
+Computer.create(laboratory: ncc, name: 'computer 021', status: 0, id: 1, spec: '8 GB')
 
