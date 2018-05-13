@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails sipi: production" uuid="0caef8d8-0e6a-48c0-b839-198c015f20a6">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-50-19-224-165.compute-1.amazonaws.com:5432/dbf4k6e1bpnrvf</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails sipi: test" uuid="07f3e6c8-4654-4c53-afc4-de8c892f3acd">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/sipi_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails sipi: development" uuid="c8fbc0d4-9b14-474b-9a05-bb37693efb40">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:3000/sipi_development</jdbc-url>
+    </data-source>
+  </component>
+</project>
