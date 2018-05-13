@@ -54,16 +54,11 @@
         null,
         null
       ],
-      "/home/frieda/Repository/sipi/app/controllers/concerns/application_controller.rb": [
-        1,
-        1,
-        null
-      ],
       "/home/frieda/Repository/sipi/app/controllers/laboratory_controller.rb": [
         1,
         1,
-        1,
-        1,
+        2,
+        2,
         1,
         1,
         null,
@@ -264,6 +259,6 @@
         null
       ]
     },
-    "timestamp": 1526203156
+    "timestamp": 1526209192
   }
 }

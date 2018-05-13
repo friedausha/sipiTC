@@ -19,6 +19,10 @@ RSpec.describe LaboratoryController, type: :controller do
       res = get :show, params: params
       res = JSON.parse(res.body)
       expect(res['body']).to eq(JSON.parse([computer1, computer2, computer3].to_json))
+      res1 = get :show, params: {'id' => 'abs'}
+      p Laboratory.where(name: 'abs').first.present?
+      expect(res1.status).to eq(404)
+
     end
   end
   describe '#update' do

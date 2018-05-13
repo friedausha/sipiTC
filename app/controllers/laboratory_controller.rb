@@ -1,9 +1,9 @@
 class LaboratoryController < ApplicationController
   def show
-    laboratory = Laboratory.where(name: params['id']).all
-    return render json: { status: 404 } unless laboratory
-    computers = Computer.where(laboratory: laboratory).all
-    return render json: { status: 200, body: computers }
+    @laboratory = Laboratory.where(name: params['id']).first
+    raise ActiveRecord::RecordNotFound unless @laboratory
+    computers = Computer.where(laboratory: @laboratory).all
+    render json: { status: 200, body: computers }
   end
 
   def update
