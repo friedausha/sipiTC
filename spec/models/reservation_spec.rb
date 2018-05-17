@@ -7,7 +7,7 @@ RSpec.describe Reservation, type: :model do
   it { should validate_presence_of(:start_date) }
   it { should validate_presence_of(:end_date) }
   it { should belong_to(:user) }
-  it { should belong_to(:computer) }
+  it { should belong_to(:inventory) }
 
   describe '#update_status' do
     it 'updates status' do

@@ -22,9 +22,9 @@ Migrating to CreateLabs (20180317142415)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "labs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142415"]]
   [1m[35m (74.0ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317142427)
+Migrating to CreateInventories (20180317142427)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142427"]]
   [1m[35m (171.9ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
@@ -65,7 +65,7 @@ Migrating to CreateLabs (20180317142415)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "labs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142415"]]
   [1m[35m (81.7ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317142427)
+Migrating to CreateInventories (20180317142427)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -98,11 +98,11 @@ Migrating to CreateLabs (20180317142415)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "labs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142415"]]
   [1m[35m (92.0ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317142427)
+Migrating to CreateInventories (20180317142427)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lab_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lab_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_lab_id" ON "computers" ("lab_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_lab_id" ON "inventories" ("lab_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142427"]]
   [1m[35m (174.5ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
@@ -117,11 +117,11 @@ Migrating to CreateReservations (20180317142453)
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_lab_id' AND type='index'
+            WHERE name='index_inventories_on_lab_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_lab_id' AND type='index'
+            WHERE name='index_inventories_on_lab_id' AND type='index'
 [0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
@@ -147,11 +147,11 @@ Migrating to CreateLabs (20180317142415)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "labs" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142415"]]
   [1m[35m (83.8ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317142427)
+Migrating to CreateInventories (20180317142427)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lab_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lab_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_lab_id" ON "computers" ("lab_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_lab_id" ON "inventories" ("lab_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142427"]]
   [1m[35m (79.1ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
@@ -166,11 +166,11 @@ Migrating to CreateReservations (20180317142453)
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_lab_id' AND type='index'
+            WHERE name='index_inventories_on_lab_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_lab_id' AND type='index'
+            WHERE name='index_inventories_on_lab_id' AND type='index'
 [0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
@@ -196,11 +196,11 @@ Migrating to CreateLaboratories (20180317142415)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142415"]]
   [1m[35m (95.7ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317142427)
+Migrating to CreateInventories (20180317142427)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lab_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "lab_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_lab_id" ON "computers" ("lab_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_lab_id" ON "inventories" ("lab_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142427"]]
   [1m[35m (104.2ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
@@ -215,11 +215,11 @@ Migrating to CreateReservations (20180317142453)
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_lab_id' AND type='index'
+            WHERE name='index_inventories_on_lab_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_lab_id' AND type='index'
+            WHERE name='index_inventories_on_lab_id' AND type='index'
 [0m
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -255,9 +255,9 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (80.9ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (82.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -294,9 +294,9 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (81.3ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (59.7ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -335,10 +335,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (79.9ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (54.3ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -356,11 +356,11 @@ Migrating to CreateComputers (20180317152021)
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
@@ -393,10 +393,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (80.0ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (303.4ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -414,11 +414,11 @@ Migrating to CreateComputers (20180317152021)
 [0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
@@ -443,7 +443,7 @@ Migrating to CreateAdmins (20180317142359)
   [1m[35m (51.5ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -453,7 +453,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (52.8ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -461,10 +461,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (56.7ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (55.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -482,19 +482,19 @@ Migrating to CreateComputers (20180317152021)
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -829,7 +829,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (129.6ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
@@ -840,7 +840,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (123.4ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -848,10 +848,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (105.3ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (84.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -861,19 +861,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -899,7 +899,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (52.3ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
@@ -910,7 +910,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (55.2ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -918,10 +918,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (58.8ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (59.7ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -931,19 +931,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -969,7 +969,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (153.0ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.3ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
@@ -980,7 +980,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (59.3ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -988,10 +988,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (81.2ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (77.6ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -1001,19 +1001,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -1039,7 +1039,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (78.0ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
@@ -1050,7 +1050,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (53.9ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -1058,10 +1058,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (80.3ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (78.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -1071,19 +1071,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -1109,7 +1109,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (75.6ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
@@ -1120,7 +1120,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (53.2ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -1128,10 +1128,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (60.4ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (75.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -1141,19 +1141,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -1179,7 +1179,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (99.6ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
@@ -1190,7 +1190,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (91.9ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -1198,10 +1198,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (103.6ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (89.2ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -1211,19 +1211,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -1249,7 +1249,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (60.4ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
@@ -1260,7 +1260,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (54.8ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -1268,10 +1268,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (60.8ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "number" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (57.2ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -1281,19 +1281,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -1319,7 +1319,7 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (63.3ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
   [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
@@ -1330,7 +1330,7 @@ Migrating to CreateReservations (20180317142453)
             FROM sqlite_temp_master
             WHERE name='index_reservations_on_user_id' AND type='index'
 [0m
-  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317142453"]]
   [1m[35m (52.3ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateLaboratories (20180317152007)
@@ -1338,10 +1338,10 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152007"]]
   [1m[35m (61.0ms)[0m  [1m[36mcommit transaction[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180317152021"]]
   [1m[35m (58.6ms)[0m  [1m[36mcommit transaction[0m
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
@@ -1351,19 +1351,19 @@ Migrating to CreateComputers (20180317152021)
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            WHERE name='index_inventories_on_laboratory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
@@ -1412,22 +1412,22 @@ Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (101.4ms)[0m  [1m[35mDROP TABLE "computers"[0m
-  [1m[35m (63.3ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (101.4ms)[0m  [1m[35mDROP TABLE "inventories"[0m
+  [1m[35m (63.3ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.3ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (67.7ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (67.7ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35m (64.7ms)[0m  [1m[35mDROP TABLE "laboratories"[0m
   [1m[35m (64.6ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (64.5ms)[0m  [1m[35mDROP TABLE "reservations"[0m
-  [1m[35m (67.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (61.6ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (67.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (61.6ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (66.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (63.2ms)[0m  [1m[35mDROP TABLE "users"[0m
@@ -1439,22 +1439,22 @@ Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
   [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (88.3ms)[0m  [1m[35mDROP TABLE "computers"[0m
-  [1m[35m (65.0ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (88.3ms)[0m  [1m[35mDROP TABLE "inventories"[0m
+  [1m[35m (65.0ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.2ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (65.3ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (65.3ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35m (65.8ms)[0m  [1m[35mDROP TABLE "laboratories"[0m
   [1m[35m (64.2ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (65.2ms)[0m  [1m[35mDROP TABLE "reservations"[0m
-  [1m[35m (66.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (62.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (66.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (62.3ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (63.2ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (155.1ms)[0m  [1m[35mDROP TABLE "users"[0m
@@ -1493,22 +1493,22 @@ Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
-  [1m[35m (64.8ms)[0m  [1m[35mDROP TABLE "computers"[0m
-  [1m[35m (69.5ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (64.8ms)[0m  [1m[35mDROP TABLE "inventories"[0m
+  [1m[35m (69.5ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.4ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (65.2ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (65.2ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35m (62.2ms)[0m  [1m[35mDROP TABLE "laboratories"[0m
   [1m[35m (67.2ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (72.4ms)[0m  [1m[35mDROP TABLE "reservations"[0m
-  [1m[35m (62.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (63.9ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (62.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (63.9ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (66.1ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (61.9ms)[0m  [1m[35mDROP TABLE "users"[0m
@@ -1520,22 +1520,22 @@ Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
   [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (74.9ms)[0m  [1m[35mDROP TABLE "computers"[0m
-  [1m[35m (63.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (74.9ms)[0m  [1m[35mDROP TABLE "inventories"[0m
+  [1m[35m (63.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "laboratory_id" integer NOT NULL, "spec" varchar NOT NULL, "note" varchar, "name" varchar NOT NULL, "reservation_started" datetime, "reservation_ended" datetime, "status" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.3ms)[0m  [1m[34mselect sqlite_version(*)[0m
-  [1m[35m (62.4ms)[0m  [1m[35mCREATE  INDEX "index_computers_on_laboratory_id" ON "computers" ("laboratory_id")[0m
+  [1m[35m (62.4ms)[0m  [1m[35mCREATE  INDEX "index_inventories_on_laboratory_id" ON "inventories" ("laboratory_id")[0m
   [1m[35m (63.5ms)[0m  [1m[35mDROP TABLE "laboratories"[0m
   [1m[35m (68.3ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "email" varchar NOT NULL, "password" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (63.1ms)[0m  [1m[35mDROP TABLE "reservations"[0m
-  [1m[35m (63.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
-  [1m[35m (64.0ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_computer_id" ON "reservations" ("computer_id")[0m
+  [1m[35m (63.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" varchar NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" datetime NOT NULL, "end_date" datetime NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (64.0ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_inventory_id" ON "reservations" ("inventory_id")[0m
   [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
             FROM sqlite_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
             UNION ALL
             SELECT sql
             FROM sqlite_temp_master
-            WHERE name='index_reservations_on_computer_id' AND type='index'
+            WHERE name='index_reservations_on_inventory_id' AND type='index'
 [0m
   [1m[35m (64.0ms)[0m  [1m[35mCREATE  INDEX "index_reservations_on_user_id" ON "reservations" ("user_id")[0m
   [1m[35m (156.9ms)[0m  [1m[35mDROP TABLE "users"[0m
@@ -1599,11 +1599,11 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms)
 
 
-  [1m[35m (106.5ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (51.4ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+  [1m[35m (106.5ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (51.4ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
   [1m[35m (53.4ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (62.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (29.2ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations"  ("computer_id")[0m
+  [1m[35m (62.8ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (29.2ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations"  ("inventory_id")[0m
   [1m[35m (29.0ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations"  ("user_id")[0m
   [1m[35m (53.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (142.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
@@ -1623,11 +1623,11 @@ Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.0ms)
   [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
-  [1m[35m (71.4ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (28.5ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+  [1m[35m (71.4ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
   [1m[35m (54.3ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (73.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (29.0ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations"  ("computer_id")[0m
+  [1m[35m (73.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (29.0ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations"  ("inventory_id")[0m
   [1m[35m (29.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations"  ("user_id")[0m
   [1m[35m (53.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (53.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
@@ -1691,12 +1691,12 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (14.2ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (55.0ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
+  [1m[35m (55.0ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
 , CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 )[0m
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
@@ -1717,11 +1717,11 @@ FOREIGN KEY ("computer_id")
   [1m[35m (621.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sipi_test"[0m
   [1m[35m (506.0ms)[0m  [1m[35mCREATE DATABASE "sipi_test" ENCODING = 'UTF-8'[0m
   [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (61.8ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (30.4ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers" USING btree ("laboratory_id")[0m
+  [1m[35m (61.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (30.4ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories" USING btree ("laboratory_id")[0m
   [1m[35m (65.0ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (64.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (129.3ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations" USING btree ("computer_id")[0m
+  [1m[35m (64.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (129.3ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations" USING btree ("inventory_id")[0m
   [1m[35m (30.1ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations" USING btree ("user_id")[0m
   [1m[35m (64.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (53.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
@@ -1745,12 +1745,12 @@ FOREIGN KEY ("computer_id")
   [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (54.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
+  [1m[35m (54.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
 , CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 )[0m
   [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
@@ -1773,12 +1773,12 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (54.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
+  [1m[35m (54.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_48a92fce51"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
 , CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 )[0m
   [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
@@ -1807,10 +1807,10 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (41.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" character varying NOT NULL, "computer_id" character varying NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (41.3ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" character varying NOT NULL, "inventory_id" character varying NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 [0m
   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
@@ -1831,11 +1831,11 @@ FOREIGN KEY ("computer_id")
   [1m[35m (5908.4ms)[0m  [1m[35mCREATE DATABASE "sipi_development" ENCODING = 'UTF-8'[0m
   [1m[35m (457.4ms)[0m  [1m[35mCREATE DATABASE "sipi_test" ENCODING = 'UTF-8'[0m
   [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (64.9ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (28.0ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers" USING btree ("laboratory_id")[0m
+  [1m[35m (64.9ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (28.0ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories" USING btree ("laboratory_id")[0m
   [1m[35m (53.1ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (62.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (28.5ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations" USING btree ("computer_id")[0m
+  [1m[35m (62.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (28.5ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations" USING btree ("inventory_id")[0m
   [1m[35m (29.3ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations" USING btree ("user_id")[0m
   [1m[35m (55.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (64.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
@@ -1856,11 +1856,11 @@ FOREIGN KEY ("computer_id")
   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
   [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
-  [1m[35m (69.7ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (117.8ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers" USING btree ("laboratory_id")[0m
+  [1m[35m (69.7ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (117.8ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories" USING btree ("laboratory_id")[0m
   [1m[35m (64.8ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (62.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
-  [1m[35m (29.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations" USING btree ("computer_id")[0m
+  [1m[35m (62.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (29.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations" USING btree ("inventory_id")[0m
   [1m[35m (29.5ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations" USING btree ("user_id")[0m
   [1m[35m (55.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (54.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
@@ -1926,10 +1926,10 @@ Migrating to CreateUsers (20180317132522)
   [1m[35m (13.0ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317142453)
   [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (59.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" character varying NOT NULL, "computer_id" character varying NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (59.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" character varying NOT NULL, "inventory_id" character varying NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 [0m
   [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (1.0ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
@@ -1963,21 +1963,21 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (62.4ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
   [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (60.5ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
+  [1m[35m (60.5ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
 FOREIGN KEY ("laboratory_id")
   REFERENCES "laboratories" ("id")
 )[0m
-  [1m[35m (26.8ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152021"]]
   [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317152453)
   [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (52.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" character varying NOT NULL, "computer_id" character varying NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (52.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" character varying NOT NULL, "inventory_id" character varying NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 [0m
   [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
@@ -2009,23 +2009,23 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (43.3ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
   [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (43.5ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
+  [1m[35m (43.5ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
 FOREIGN KEY ("laboratory_id")
   REFERENCES "laboratories" ("id")
 )[0m
-  [1m[35m (27.3ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+  [1m[35m (27.3ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
   [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152021"]]
   [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317152453)
   [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (52.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (52.7ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 [0m
-  [1m[35m (25.0ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations"  ("computer_id")[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations"  ("inventory_id")[0m
   [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
@@ -2061,23 +2061,23 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (43.6ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
   [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (43.2ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
+  [1m[35m (43.2ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" timestamp, "reservation_ended" timestamp, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
 FOREIGN KEY ("laboratory_id")
   REFERENCES "laboratories" ("id")
 )[0m
-  [1m[35m (17.7ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+  [1m[35m (17.7ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
   [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152021"]]
   [1m[35m (8.0ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317152453)
   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (52.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (52.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 [0m
-  [1m[35m (25.2ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations"  ("computer_id")[0m
+  [1m[35m (25.2ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations"  ("inventory_id")[0m
   [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
@@ -2113,23 +2113,23 @@ Migrating to CreateLaboratories (20180317152007)
   [1m[35m (65.0ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
   [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateComputers (20180317152021)
+Migrating to CreateInventories (20180317152021)
   [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (54.2ms)[0m  [1m[35mCREATE TABLE "computers" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" date, "reservation_ended" date, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
+  [1m[35m (54.2ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" date, "reservation_ended" date, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3fd8681ef3"
 FOREIGN KEY ("laboratory_id")
   REFERENCES "laboratories" ("id")
 )[0m
-  [1m[35m (29.6ms)[0m  [1m[35mCREATE  INDEX  "index_computers_on_laboratory_id" ON "computers"  ("laboratory_id")[0m
+  [1m[35m (29.6ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
   [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152021"]]
   [1m[35m (7.4ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateReservations (20180317152453)
   [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (69.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "computer_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (69.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
   [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_dc5ebd2b9c"
-FOREIGN KEY ("computer_id")
-  REFERENCES "computers" ("id")
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
 [0m
-  [1m[35m (22.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_computer_id" ON "reservations"  ("computer_id")[0m
+  [1m[35m (22.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations"  ("inventory_id")[0m
   [1m[35m (2.4ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
 FOREIGN KEY ("user_id")
   REFERENCES "users" ("id")
@@ -2143,3 +2143,89 @@ FOREIGN KEY ("user_id")
   [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-17 14:37:38.795618"], ["updated_at", "2018-05-17 14:37:38.795618"]]
+  [1m[35m (96.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (317.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sipi_development"[0m
+  [1m[35m (298.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sipi_test"[0m
+  [1m[35m (71.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (58.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5819883773697000210);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20180317132522)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (63.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317132522"]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLaboratories (20180317152007)
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.3ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
+  [1m[35m (7.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComputers (20180317152021)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-17 14:43:27.723016"], ["updated_at", "2018-05-17 14:43:27.723016"]]
+  [1m[35m (141.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (232.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sipi_development"[0m
+  [1m[35m (231.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "sipi_test"[0m
+  [1m[35m (114.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (60.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5819883773697000210);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20180317132522)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (47.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "name" character varying NOT NULL, "nrp" character varying NOT NULL, "email" character varying NOT NULL, "phone_number" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317132522"]]
+  [1m[35m (13.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLaboratories (20180317152007)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.4ms)[0m  [1m[35mCREATE TABLE "laboratories" ("id" serial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152007"]]
+  [1m[35m (8.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateInventories (20180317152021)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (43.8ms)[0m  [1m[35mCREATE TABLE "inventories" ("id" serial primary key, "laboratory_id" integer NOT NULL, "spec" character varying NOT NULL, "note" character varying, "name" character varying NOT NULL, "reservation_started" date, "reservation_ended" date, "status" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_f6c37c7037"
+FOREIGN KEY ("laboratory_id")
+  REFERENCES "laboratories" ("id")
+)[0m
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE  INDEX  "index_inventories_on_laboratory_id" ON "inventories"  ("laboratory_id")[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152021"]]
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReservations (20180317152453)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (51.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" serial primary key, "user_id" integer NOT NULL, "inventory_id" integer NOT NULL, "reason" character varying NOT NULL, "status" integer DEFAULT 0 NOT NULL, "start_date" timestamp NOT NULL, "end_date" timestamp NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_4d43fad2ed"
+FOREIGN KEY ("inventory_id")
+  REFERENCES "inventories" ("id")
+[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_inventory_id" ON "reservations"  ("inventory_id")[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "reservations" ADD CONSTRAINT "fk_rails_48a92fce51"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (26.4ms)[0m  [1m[35mCREATE  INDEX  "index_reservations_on_user_id" ON "reservations"  ("user_id")[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180317152453"]]
+  [1m[35m (8.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-05-17 14:43:46.464741"], ["updated_at", "2018-05-17 14:43:46.464741"]]
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

@@ -5,6 +5,6 @@ FactoryBot.define do
     end_date { Faker::Date.between(Date.today, Date.today + 1.year) }
     status 0
     user
-    computer
+    inventory
   end
 end

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/frieda/Repository/sipi/app/controllers/computer_controller.rb": [
+      "/home/frieda/Repository/sipi/app/controllers/inventory_controller.rb": [
         1,
         1,
         1,
@@ -129,7 +129,7 @@
         null,
         null
       ],
-      "/home/frieda/Repository/sipi/app/jobs/change_computer_status_job.rb": [
+      "/home/frieda/Repository/sipi/app/jobs/change_inventory_status_job.rb": [
         1,
         1,
         null,
@@ -139,7 +139,7 @@
         null,
         null
       ],
-      "/home/frieda/Repository/sipi/app/models/computer.rb": [
+      "/home/frieda/Repository/sipi/app/models/inventory.rb": [
         1,
         1,
         1,
@@ -259,6 +259,6 @@
         null
       ]
     },
-    "timestamp": 1526209192
+    "timestamp": 1526568810
   }
 }

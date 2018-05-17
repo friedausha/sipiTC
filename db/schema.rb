@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20180317152453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "computers", force: :cascade do |t|
+  create_table "inventories", force: :cascade do |t|
     t.integer  "laboratory_id",       null: false
     t.string   "spec",                null: false
     t.string   "note"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180317152453) do
     t.integer  "status",              null: false
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-    t.index ["laboratory_id"], name: "index_computers_on_laboratory_id", using: :btree
+    t.index ["laboratory_id"], name: "index_inventories_on_laboratory_id", using: :btree
   end
 
   create_table "laboratories", force: :cascade do |t|
@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20180317152453) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "user_id",                 null: false
-    t.integer  "computer_id",             null: false
-    t.string   "reason",                  null: false
-    t.integer  "status",      default: 0, null: false
-    t.datetime "start_date",              null: false
-    t.datetime "end_date",                null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.index ["computer_id"], name: "index_reservations_on_computer_id", using: :btree
+    t.integer  "user_id",                  null: false
+    t.integer  "inventory_id",             null: false
+    t.string   "reason",                   null: false
+    t.integer  "status",       default: 0, null: false
+    t.datetime "start_date",               null: false
+    t.datetime "end_date",                 null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["inventory_id"], name: "index_reservations_on_inventory_id", using: :btree
     t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end
 
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20180317152453) do
     t.datetime "updated_at",   null: false
   end
 
-  add_foreign_key "computers", "laboratories"
-  add_foreign_key "reservations", "computers"
+  add_foreign_key "inventories", "laboratories"
+  add_foreign_key "reservations", "inventories"
   add_foreign_key "reservations", "users"
 end

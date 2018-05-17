@@ -2,8 +2,8 @@ class LaboratoryController < ApplicationController
   def show
     @laboratory = Laboratory.where(name: params['id']).first
     raise ActiveRecord::RecordNotFound unless @laboratory
-    computers = Computer.where(laboratory: @laboratory).all
-    render json: { status: 200, body: computers }
+    inventories = Inventory.where(laboratory: @laboratory).all
+    render json: { status: 200, body: inventories }
   end
 
   def update

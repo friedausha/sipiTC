@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for laboratory', type: :routing do
-  it 'routes computer to laboratorycontroller' do
+  it 'routes inventory to laboratorycontroller' do
     expect(put: 'laboratory/1').to route_to(
       controller: 'laboratory',
       action: 'update',

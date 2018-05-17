@@ -7,18 +7,18 @@ RSpec.describe LaboratoryController, type: :controller do
   end
 
   describe '#show' do
-    it 'shows certain computer inlaboratory' do
+    it 'shows certain inventory inlaboratory' do
       laboratory = create :laboratory
-      computer1 = create :computer, laboratory: laboratory
-      computer2 = create :computer, laboratory: laboratory
-      computer3 = create :computer, laboratory: laboratory
+      inventory1 = create :inventory, laboratory: laboratory
+      inventory2 = create :inventory, laboratory: laboratory
+      inventory3 = create :inventory, laboratory: laboratory
       params = {
         'id' => laboratory.name
       }
 
       res = get :show, params: params
       res = JSON.parse(res.body)
-      expect(res['body']).to eq(JSON.parse([computer1, computer2, computer3].to_json))
+      expect(res['body']).to eq(JSON.parse([inventory1, inventory2, inventory3].to_json))
       res1 = get :show, params: {'id' => 'abs'}
       p Laboratory.where(name: 'abs').first.present?
       expect(res1.status).to eq(404)
@@ -26,7 +26,7 @@ RSpec.describe LaboratoryController, type: :controller do
     end
   end
   describe '#update' do
-    it 'updates attributes of computer' do
+    it 'updates attributes of inventory' do
       laboratory = create :laboratory
       name = Faker::Lorem.characters
       password = Faker::Lorem.characters

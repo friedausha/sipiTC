@@ -13,13 +13,13 @@ RSpec.describe Registrar do
       name: name
     }
   end
-  let(:computer) { create :computer }
+  let(:inventory) { create :inventory }
   let(:reason) { Faker::Lorem.characters }
   let(:user) { create :user }
   let(:reservation_attributes) do
     {
       user: user,
-      computer: computer,
+      inventory: inventory,
       start_date: Faker::Date.between(2.weeks.ago, 1.week.ago),
       end_date: Faker::Date.between(Date.today, Date.today + 2.weeks),
       reason: reason,
@@ -56,7 +56,7 @@ RSpec.describe Registrar do
       registrar.register_reservation(reservation_attributes: reservation_attributes)
 
       reservation = Reservation.find_by(user: user)
-      expect(reservation.computer).to eq(computer)
+      expect(reservation.inventory).to eq(inventory)
       expect(reservation.reason).to eq(reason)
       expect(reservation.status).to eq(0)
     end
