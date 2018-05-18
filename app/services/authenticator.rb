@@ -12,4 +12,10 @@ class Authenticator
   def authorization_tokens
     @authorization.split(':')
   end
+
+  def user_permitted?
+    user = User.find_by(nrp: authorization_tokens[0])
+    return false unless user
+    authorization_tokens[1] == user.password
+  end
 end

@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :nrp, null: false, unique: true
       t.string :email, null: false, unique: true
       t.string :phone_number, null: false
+      t.string :password, null: false
       t.timestamps
     end
   end

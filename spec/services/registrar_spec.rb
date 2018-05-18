@@ -5,12 +5,14 @@ RSpec.describe Registrar do
   let(:email) { Faker::Lorem.characters }
   let(:phone_number) { Faker::Lorem.characters }
   let(:name) { Faker::Lorem.characters }
+  let(:password) { Faker::Lorem.characters }
   let(:user_attributes) do
     {
       nrp: nrp,
       email: email,
       phone_number: phone_number,
-      name: name
+      name: name,
+      password: password
     }
   end
   let(:inventory) { create :inventory }
@@ -55,10 +57,11 @@ RSpec.describe Registrar do
     it 'register_reservation' do
       registrar.register_reservation(reservation_attributes: reservation_attributes)
 
-      reservation = Reservation.find_by(user: user)
+      reservation = Reservation.where(user: user).first
       expect(reservation.inventory).to eq(inventory)
       expect(reservation.reason).to eq(reason)
       expect(reservation.status).to eq(0)
+      expect(Reservation.all.count).to eq 1
     end
   end
 end

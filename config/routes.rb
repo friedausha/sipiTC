@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :reservation
   resources :inventory
   resources :laboratory
+  resources :user
 
   match '*path', to: 'application#route_not_found',
                  via: :all,

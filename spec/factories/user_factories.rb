@@ -4,5 +4,6 @@ FactoryBot.define do
     nrp { Faker::Lorem.characters }
     email { Faker::Lorem.characters }
     phone_number { Faker::Lorem.characters }
+    password { Faker::Lorem.characters }
   end
 end

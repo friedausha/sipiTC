@@ -1,29 +1,19 @@
 class ReservationController < ApplicationController
   def create
-    registrar = Registrar.new
-    user_attributes = {
-      nrp: params['nrp'],
-      email: params['email'],
-      phone_number: params['phone_number'],
-      name: params['name']
-    }
-    registrar.register_or_update_user(user_attributes:
-    user_attributes)
-    user = User.find_by(nrp: params['nrp'])
-    return render json: {status: 400} unless user
-    inventory = Inventory.find_by!(name: params['inventory'])
+    permitted = Authenticator.new(authorization: request.headers['Authorization']).user_permitted?
+    return render json: { status: 403 } unless permitted
+    inventory = Inventory.find(params['inventory'])
     reservation_attributes = {
-      user: user,
-      inventory: inventory,
-      start_date: params['start_date'],
-      end_date: params['end_date'],
-      reason: params['reason']
+        user: User.find_by(nrp: params['nrp']),
+        inventory: inventory,
+        start_date: params['start_date'],
+        end_date: params['end_date'],
+        reason: params['reason']
     }
-    reservation = registrar.register_reservation(reservation_attributes:
-    reservation_attributes)
-    return render json: { status: 400} unless reservation.valid?
+    registrar = Registrar.new
+    reservation = registrar.register_reservation(reservation_attributes: reservation_attributes)
     Mailers.new.new_reservation_email(inventory.laboratory)
-    render json: { status: 200 }
+    render json: { status: 200 } if reservation.present?
   end
 
   def update

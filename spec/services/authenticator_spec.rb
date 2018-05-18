@@ -24,4 +24,19 @@ RSpec.describe Authenticator do
       end
     end
   end
+
+  describe '#user_permitted' do
+    let(:user) { create :user }
+    let(:authorization) { "#{user.nrp}" + ':' + "#{user.password}" }
+    it 'check whether the client is permitted' do
+      authenticator = Authenticator.new(authorization: authorization)
+      expect(authenticator.user_permitted?).to eq(true)
+    end
+    context 'wrong password' do
+      it 'returns false' do
+        authenticator = Authenticator.new(authorization: 'askla:alkd')
+        expect(authenticator.user_permitted?).to eq(false)
+      end
+    end
+  end
 end
