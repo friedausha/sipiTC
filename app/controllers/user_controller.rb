@@ -18,7 +18,7 @@ class UserController < ApplicationController
     return render json: { status: 403 } unless permitted
 
     user = User.where(id: params['id']).first
-    return render json: { status: 404 } unless inventory
+    return render json: { status: 404 } unless user
 
     user.update_attributes(name: params['name']) if params['name']
     user.update_attributes(nrp: params['nrp']) if params['nrp']
