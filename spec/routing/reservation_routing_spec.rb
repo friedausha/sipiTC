@@ -8,5 +8,10 @@ RSpec.describe 'routes for Reservation', type: :routing do
       action: 'update',
       id: '1'
     )
+    expect(get: 'reservation/1').to route_to(
+      controller: 'reservation',
+      action: 'show',
+      id: '1'
+    )
   end
 end

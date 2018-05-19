@@ -26,10 +26,11 @@ class ReservationController < ApplicationController
 
     laboratory = Laboratory.where(name: params['id'])
     return render json: { status: 404 } unless laboratory
-    reservation = Reservation.where(laboratory: laboratory).all
+    inventory = Inventory.where(laboratory: laboratory).all
+    reservation = Reservation.where(inventory: inventory).all
     render json: { status: 200, body: reservation }
   end
-  
+
   def update
     permitted = Authenticator.new(authorization:
       request.headers['Authorization']).permitted?
