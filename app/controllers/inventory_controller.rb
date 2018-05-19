@@ -12,7 +12,7 @@ class InventoryController < ApplicationController
     spec: params['spec'], status: 0)
     inventory = Inventory.find_by(name: params['name'])
     inventory.update_attributes(note: params['note']) if params['note']
-    return render json: { status: 200 }
+    render json: { status: 200 }
   end
 
   def show
