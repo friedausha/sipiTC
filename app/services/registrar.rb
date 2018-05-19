@@ -5,6 +5,7 @@ class Registrar
   end
 
   def register_reservation(reservation_attributes:)
-    Reservation.create!(reservation_attributes)
+    reservation = Reservation.new(reservation_attributes)
+    reservation.save!
   end
 end

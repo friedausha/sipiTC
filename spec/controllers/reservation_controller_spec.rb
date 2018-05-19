@@ -28,9 +28,12 @@ RSpec.describe ReservationController, type: :controller do
     it 'calls Registrar and creates new reservation' do
       headers1 = { 'Authorization' => "aba:aaa" }
       request.headers.merge!headers1
-      post :create, params: params, headers: headers1
-      reservation = Reservation.where(user: user).first
+      post :create, params: params
+      reservation = Reservation.all.first
 
+      p response.status
+      expect(response).to have_http_status(200)
+      p start_date
       expect(reservation.start_date).to eq(start_date)
       expect(reservation.reason).to eq(reason)
     end
