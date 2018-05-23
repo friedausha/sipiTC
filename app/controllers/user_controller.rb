@@ -27,4 +27,11 @@ class UserController < ApplicationController
     user.update_attributes(phone_number: params['phone_number']) if params['phone_number']
     render json: { status: 200 }
   end
+
+  def show
+    permitted = Authenticator.new(authorization:
+                                      request.headers['Authorization']).user_permitted?
+    return render json: { status: 403 } unless permitted
+    render json: { status: 200 }
+  end
 end
