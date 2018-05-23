@@ -29,6 +29,8 @@ class UserController < ApplicationController
   end
 
   def show
+    user = User.where(nrp: params['id'])
+    return render json: { status: 404 } unless user
     permitted = Authenticator.new(authorization:
                                       request.headers['Authorization']).user_permitted?
     return render json: { status: 403 } unless permitted
