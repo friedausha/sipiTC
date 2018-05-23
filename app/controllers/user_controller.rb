@@ -29,7 +29,7 @@ class UserController < ApplicationController
   end
 
   def show
-    user = User.where(nrp: params['id'])
+    user = User.find_by(nrp: params['id'])
     return render json: { status: 404 } unless user
     permitted = Authenticator.new(authorization:
                                       request.headers['Authorization']).user_permitted?
