@@ -2392,3 +2392,18 @@ FOREIGN KEY ("user_id")
   [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5819883773697000210);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReservations (20180317152453)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP INDEX  "index_reservations_on_user_id"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "reservations" DROP CONSTRAINT "fk_rails_48a92fce51"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP INDEX  "index_reservations_on_inventory_id"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "reservations" DROP CONSTRAINT "fk_rails_4d43fad2ed"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20180317152453"]]
+  [1m[35m (27.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(5819883773697000210)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
