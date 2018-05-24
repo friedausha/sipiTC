@@ -47,5 +47,6 @@ class InventoryController < ApplicationController
 
     inventory = Inventory.where(id: params['id']).first
     inventory.destroy!
+    render json: { status: 200 }
   end
 end
