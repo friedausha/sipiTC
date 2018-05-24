@@ -2727,3 +2727,27 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/user/5115100152" for ::1 at 2018-05-24 22:32:39 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100152"}
+  [1m[36mUser Load (317.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100152"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100152"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.75ms)
+Completed 200 OK in 346ms (Views: 4.4ms | ActiveRecord: 317.4ms)
+
+
+Started POST "/reservation" for ::1 at 2018-05-24 23:43:23 +0700
+Processing by ReservationController#create as */*
+  Parameters: {"inventory"=>"4", "nrp"=>"5115100071", "start_date"=>"2001-02-03", "end_date"=>"2001-02-04", "reason"=>"reason", "reservation"=>{"reason"=>"reason", "start_date"=>"2001-02-03", "end_date"=>"2001-02-04"}}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (264.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[36mInventory Load (264.3ms)[0m  [1m[34mSELECT  "inventories".* FROM "inventories" WHERE "inventories"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[35m (263.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (272.2ms)[0m  [1m[32mINSERT INTO "reservations" ("user_id", "inventory_id", "reason", "start_date", "end_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["inventory_id", 4], ["reason", "reason"], ["start_date", "2001-02-03 00:00:00"], ["end_date", "2001-02-04 00:00:00"], ["created_at", "2018-05-24 16:43:26.655382"], ["updated_at", "2018-05-24 16:43:26.655382"]]
+  [1m[35m (269.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLaboratory Load (274.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 3761ms (Views: 6.2ms | ActiveRecord: 2173.5ms)
+
+
