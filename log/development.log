@@ -2645,3 +2645,77 @@ app/controllers/user_controller.rb:38: syntax error, unexpected '}', expecting =
   Rendering /home/frieda/.rvm/gems/ruby-2.4.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
   Rendered /home/frieda/.rvm/gems/ruby-2.4.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
   Rendered /home/frieda/.rvm/gems/ruby-2.4.1/gems/actionpack-5.0.6/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.9ms)
+Started GET "/user/5115100071" for ::1 at 2018-05-24 21:50:33 +0700
+Processing by UserController#show as HTML
+  Parameters: {"id"=>"5115100071"}
+  [1m[36mUser Load (319.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 500 Internal Server Error in 1940ms (Views: 1.6ms | ActiveRecord: 1502.4ms)
+
+
+Started GET "/user/5115100071" for ::1 at 2018-05-24 21:51:45 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100071"}
+  [1m[36mUser Load (299.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.48ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.14ms)
+Completed 500 Internal Server Error in 951ms (Views: 1.1ms | ActiveRecord: 636.9ms)
+
+
+Started GET "/user/5115100071" for ::1 at 2018-05-24 21:51:55 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100071"}
+  [1m[36mUser Load (318.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.62ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.15ms)
+Completed 500 Internal Server Error in 962ms (Views: 1.0ms | ActiveRecord: 636.9ms)
+
+
+Started GET "/user/5115100071" for ::1 at 2018-05-24 21:52:36 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100071"}
+  [1m[36mUser Load (316.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.87ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.17ms)
+Completed 500 Internal Server Error in 323ms (Views: 1.2ms | ActiveRecord: 316.6ms)
+
+
+Started GET "/user/5115100071" for ::1 at 2018-05-24 21:54:27 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100071"}
+  [1m[36mUser Load (321.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 352ms (Views: 4.8ms | ActiveRecord: 321.9ms)
+
+
+Started GET "/user/5115100071" for ::1 at 2018-05-24 21:54:42 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100071"}
+  [1m[36mUser Load (364.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100071"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.1ms)
+Completed 200 OK in 368ms (Views: 0.7ms | ActiveRecord: 364.0ms)
+
+
+Started GET "/user/5115100152" for ::1 at 2018-05-24 21:55:05 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100152"}
+  [1m[36mUser Load (316.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100152"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100152"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.15ms)
+Completed 200 OK in 320ms (Views: 1.0ms | ActiveRecord: 316.5ms)
+
+
+Started GET "/user/5115100152" for ::1 at 2018-05-24 21:55:10 +0700
+Processing by UserController#show as */*
+  Parameters: {"id"=>"5115100152"}
+  [1m[36mUser Load (319.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100152"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."nrp" = $1 LIMIT $2[0m  [["nrp", "5115100152"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.16ms)
+Completed 200 OK in 324ms (Views: 1.2ms | ActiveRecord: 319.4ms)
+
+
