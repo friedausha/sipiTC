@@ -10,7 +10,7 @@ RSpec.describe ChangeInventoryStatusJob, type: :job do
       ChangeInventoryStatusJob.perform_now
 
       expect(com1.reload.reservation_ended).to eq(nil)
-      expect(com1.reload.status).to eq(0)
+      expect(com1.reload.status).to eq('Belum Dipinjam')
       expect(com2.reload.reservation_ended).to eq(tomorrow)
     end
   end

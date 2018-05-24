@@ -12,7 +12,7 @@ RSpec.describe Reservation, type: :model do
   describe '#update_status' do
     it 'updates status' do
       reservation = create :reservation
-      status = Random.rand(1..1000)
+      status = Faker::Lorem.characters
       reservation.update_status(status: status)
       expect(reservation.reload.status).to eq(status)
     end

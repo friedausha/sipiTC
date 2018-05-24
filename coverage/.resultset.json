@@ -114,6 +114,7 @@
         0,
         0,
         0,
+        0,
         null,
         null,
         1,
@@ -167,6 +168,14 @@
         0,
         0,
         null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
         null
       ],
       "/home/frieda/Repository/sipi/app/jobs/change_inventory_status_job.rb": [
@@ -175,6 +184,7 @@
         null,
         1,
         1,
+        null,
         null,
         null,
         null
@@ -306,6 +316,6 @@
         0
       ]
     },
-    "timestamp": 1526713322
+    "timestamp": 1527146575
   }
 }

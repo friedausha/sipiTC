@@ -9,7 +9,7 @@ class InventoryController < ApplicationController
 
     return render json: { status: 404 } unless params['name'] && params['spec']
     Inventory.create!(laboratory_id: laboratory.id, name: params['name'],
-    spec: params['spec'], status: 0)
+    spec: params['spec'], status: 'Belum Dipinjam')
     inventory = Inventory.find_by(name: params['name'])
     inventory.update_attributes(note: params['note']) if params['note']
     render json: { status: 200 }

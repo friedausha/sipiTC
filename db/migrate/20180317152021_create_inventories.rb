@@ -7,7 +7,7 @@ class CreateInventories < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.date :reservation_started
       t.date :reservation_ended
-      t.integer :status, null: false
+      t.string :status, null: false, default: 'Belum Dipinjam'
       t.timestamps
     end
   end

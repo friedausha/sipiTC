@@ -60,7 +60,7 @@ RSpec.describe Registrar do
       reservation = Reservation.where(user: user).first
       expect(reservation.inventory).to eq(inventory)
       expect(reservation.reason).to eq(reason)
-      expect(reservation.status).to eq(0)
+      expect(reservation.status).to eq('Belum Diterima')
       expect(Reservation.all.count).to eq 1
     end
   end

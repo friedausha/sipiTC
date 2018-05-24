@@ -9,6 +9,6 @@ class Inventory < ApplicationRecord
   end
 
   def self.list_available(date: )
-    Inventory.where('status = ? or reservation_ended <=?', 0, date).all
+    Inventory.where('status = ? or reservation_ended <=?', 'Belum Dipinjam', date).all
   end
 end

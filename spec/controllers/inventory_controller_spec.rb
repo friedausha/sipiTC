@@ -24,7 +24,7 @@ RSpec.describe InventoryController, type: :controller do
       res = Inventory.where(name: inventory.name).first
       expect(res.spec).to eq(inventory.spec)
       expect(res.note).to eq(note)
-      expect(res.status).to eq(0)
+      expect(res.status).to eq('Belum Dipinjam')
       expect(res.reservation_ended).to eq(nil)
     end
   end
@@ -56,7 +56,7 @@ RSpec.describe InventoryController, type: :controller do
 
       expect(inventory.reload.spec).to eq(spec)
       expect(inventory.reload.note).to eq(notes)
-      expect(inventory.reload.status).to eq(0)
+      expect(inventory.reload.status).to eq('Belum Dipinjam')
     end
   end
 

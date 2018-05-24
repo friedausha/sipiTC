@@ -50,7 +50,7 @@ RSpec.describe ReservationController, type: :controller do
       request.headers.merge!headers
       put :update, params: params
 
-      expect(inventory.reload.status).to eq(1)
+      expect(inventory.reload.status).to eq('1')
       expect(inventory.reload.reservation_started).to eq(reservation.start_date)
     end
   end
@@ -65,7 +65,7 @@ RSpec.describe ReservationController, type: :controller do
       request.headers.merge!headers
       put :update, params: params
 
-      expect(inventory.reload.status).to eq(2)
+      expect(inventory.reload.status).to eq('2')
     end
   end
 end

@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 20180317152453) do
   enable_extension "plpgsql"
 
   create_table "inventories", force: :cascade do |t|
-    t.integer  "laboratory_id",       null: false
-    t.string   "spec",                null: false
+    t.integer  "laboratory_id",                                  null: false
+    t.string   "spec",                                           null: false
     t.string   "note"
-    t.string   "name",                null: false
+    t.string   "name",                                           null: false
     t.date     "reservation_started"
     t.date     "reservation_ended"
-    t.integer  "status",              null: false
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.string   "status",              default: "Belum Dipinjam", null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
     t.index ["laboratory_id"], name: "index_inventories_on_laboratory_id", using: :btree
   end
 
@@ -37,14 +37,14 @@ ActiveRecord::Schema.define(version: 20180317152453) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.integer  "user_id",                  null: false
-    t.integer  "inventory_id",             null: false
-    t.string   "reason",                   null: false
-    t.integer  "status",       default: 0, null: false
-    t.datetime "start_date",               null: false
-    t.datetime "end_date",                 null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "user_id",                                 null: false
+    t.integer  "inventory_id",                            null: false
+    t.string   "reason",                                  null: false
+    t.string   "status",       default: "Belum Diterima", null: false
+    t.datetime "start_date",                              null: false
+    t.datetime "end_date",                                null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.index ["inventory_id"], name: "index_reservations_on_inventory_id", using: :btree
     t.index ["user_id"], name: "index_reservations_on_user_id", using: :btree
   end

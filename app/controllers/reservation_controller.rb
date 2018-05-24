@@ -10,7 +10,7 @@ class ReservationController < ApplicationController
         start_date: params['start_date'],
         end_date: params['end_date'],
         reason: params['reason'],
-        status: 0
+        status: 'Belum Diterima'
     }
     registrar = Registrar.new
     reservation = registrar.register_reservation(reservation_attributes: reservation_attributes)
