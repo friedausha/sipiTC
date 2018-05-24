@@ -49,4 +49,14 @@ class ReservationController < ApplicationController
     end
     return render json: { status: 200 }
   end
+
+  def destroy
+    permitted = Authenticator.new(authorization:
+                                      request.headers['Authorization']).permitted?
+    return render json: { status: 403 } unless permitted
+
+    reservation = Reservation.where(id: params['id']).first
+    reservation.destroy!
+    render json: { status: 200 }
+  end
 end

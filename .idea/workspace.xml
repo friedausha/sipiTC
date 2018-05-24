@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="053ee4c1-c085-44ac-a836-e60c3da60af9" name="Default" comment="add seed">
-      <change beforePath="$PROJECT_DIR$/app/controllers/inventory_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/inventory_controller.rb" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/reservation_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/reservation_controller.rb" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -23,21 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reservation_controller.rb" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reservation_controller.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/reservation_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            <state relative-caret-position="558">
+              <caret line="59" column="32" lean-forward="true" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inventory_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="inventory_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/inventory_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+            <state relative-caret-position="342">
+              <caret line="42" column="2" lean-forward="true" selection-start-line="42" selection-start-column="2" selection-end-line="50" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -153,8 +153,8 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/user_controller.rb" />
         <option value="$PROJECT_DIR$/spec/controllers/reservation_controller_spec.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/reservation_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/inventory_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/reservation_controller.rb" />
       </list>
     </option>
   </component>
@@ -419,7 +419,7 @@
       <workItem from="1526203819254" duration="9186000" />
       <workItem from="1527065801410" duration="3000" />
       <workItem from="1527109394876" duration="978000" />
-      <workItem from="1527171827906" duration="5872000" />
+      <workItem from="1527171827906" duration="6046000" />
     </task>
     <task id="LOCAL-00001" summary="add seed">
       <created>1526205551170</created>
@@ -451,7 +451,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25098000" />
+    <option name="totallyTimeSpent" value="25272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="24" width="1303" height="780" extended-state="6" />
@@ -857,18 +857,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/reservation_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/inventory_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="50" column="5" lean-forward="true" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="342">
+          <caret line="42" column="2" lean-forward="true" selection-start-line="42" selection-start-column="2" selection-end-line="50" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/inventory_controller.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/reservation_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+        <state relative-caret-position="558">
+          <caret line="59" column="32" lean-forward="true" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
           <folding />
         </state>
       </provider>
