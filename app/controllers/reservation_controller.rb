@@ -15,8 +15,7 @@ class ReservationController < ApplicationController
     registrar = Registrar.new
     reservation = registrar.register_reservation(reservation_attributes: reservation_attributes)
     Mailers.new.new_reservation_email(inventory.laboratory)
-    return render json: { status: 200 } if reservation.present?
-    render json: { status: 300 }
+    render json: { status: 200 } if reservation.present?
   end
 
   def show
