@@ -14,7 +14,7 @@ class ReservationController < ApplicationController
     }
     registrar = Registrar.new
     reservation = registrar.register_reservation(reservation_attributes: reservation_attributes)
-    Mailers.new.new_reservation_email(inventory.laboratory)
+    # Mailers.new.new_reservation_email(inventory.laboratory)
     render json: { status: 200 } if reservation.present?
   end
 
