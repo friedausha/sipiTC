@@ -23,7 +23,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'bootstrap-sass'
 gem 'sendgrid-ruby'
-
+gem 'rack-cors', :require => 'rack/cors'
 group :development, :test do
   gem 'brakeman', require: false
   gem 'factory_bot_rails'
