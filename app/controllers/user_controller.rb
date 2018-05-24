@@ -33,6 +33,7 @@ class UserController < ApplicationController
     return 404 unless user
     permitted = Authenticator.new(authorization:
                                       request.headers['Authorization']).user_permitted?
+    puts request.headers
     return render json: { status: 403 } unless permitted
     render json: { status: 200, body: { request.headers } }
   end
