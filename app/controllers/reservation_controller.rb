@@ -5,12 +5,12 @@ class ReservationController < ApplicationController
     inventory = Inventory.find(params['inventory'])
     return render json: { status: 404 } unless inventory
     reservation_attributes = {
-        :user => User.find_by(nrp: params['nrp']),
-        :inventory => inventory,
-        :start_date => params['start_date'],
-        :end_date => params['end_date'],
-        :reason => params['reason'],
-        :status => 'Belum Diterima'
+        user: User.find_by(nrp: params['nrp']),
+        inventory: inventory,
+        start_date: params['start_date'],
+        end_date: params['end_date'],
+        reason: params['reason'],
+        status: 'Belum Diterima'
     }
     registrar = Registrar.new
     reservation = registrar.register_reservation(reservation_attributes: reservation_attributes)
