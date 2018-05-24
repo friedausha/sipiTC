@@ -2432,3 +2432,27 @@ Processing by LaboratoryController#show as */*
 Completed 404 Not Found in 4ms (Views: 0.8ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/laboratory/dummy_frieda" for ::1 at 2018-05-24 21:43:14 +0700
+Processing by LaboratoryController#show as */*
+  Parameters: {"id"=>"dummy_frieda"}
+  [1m[36mLaboratory Load (0.8ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."name" = $1 ORDER BY "laboratories"."id" ASC LIMIT $2[0m  [["name", "dummy_frieda"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.12ms)
+Completed 404 Not Found in 4ms (Views: 0.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/laboratory/NCC" for ::1 at 2018-05-24 21:43:36 +0700
+Processing by LaboratoryController#show as */*
+  Parameters: {"id"=>"NCC"}
+  [1m[36mLaboratory Load (0.7ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."name" = $1 ORDER BY "laboratories"."id" ASC LIMIT $2[0m  [["name", "NCC"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.1ms)
+Completed 404 Not Found in 4ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/laboratory/NCC" for ::1 at 2018-05-24 21:45:09 +0700
+Processing by LaboratoryController#show as */*
+  Parameters: {"id"=>"NCC"}
+  [1m[36mLaboratory Load (0.7ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."name" = $1 ORDER BY "laboratories"."id" ASC LIMIT $2[0m  [["name", "NCC"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.13ms)
+Completed 404 Not Found in 4ms (Views: 0.9ms | ActiveRecord: 0.7ms)
+
+
