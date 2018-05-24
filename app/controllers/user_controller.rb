@@ -35,6 +35,6 @@ class UserController < ApplicationController
                                       request.headers['Authorization']).user_permitted?
     puts request.headers
     return render json: { status: 403 } unless permitted
-    render json: { status: 200 }
+    render json: { status: 200 , body: user }
   end
 end
