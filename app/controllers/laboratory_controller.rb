@@ -20,4 +20,13 @@ class LaboratoryController < ApplicationController
 
     return render json: { status: 200 }
   end
+
+  def create
+    permitted = Authenticator.new(authorization:
+                                  request.headers['Authorization']).permitted?
+    laboratory = Laboratory.find_by(name: request.headers['Authorization'].split(':')[0])
+    return 404 unless laboratory
+    return render json: { status: 403 } unless permitted
+    render json: { status: 200 , body: laboratory }
+  end
 end
