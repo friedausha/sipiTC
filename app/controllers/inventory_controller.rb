@@ -16,7 +16,8 @@ class InventoryController < ApplicationController
   end
 
   def show
-    inventory = Inventory.find_by(id: params['id'])
+    laboratory = Laboratory.find_by(name: params['id'])
+    inventory = Inventory.where(laboratory: laboratory).all
     return render json: { status: 404 } unless inventory
     render json: { status: 200,  body: inventory }
   end
