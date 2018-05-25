@@ -26,7 +26,7 @@ class ReservationController < ApplicationController
     laboratory = Laboratory.where(name: params['id'])
     return render json: { status: 404 } unless laboratory
     inventory = Inventory.where(laboratory: laboratory).all
-    reservation = Reservation.where(inventory: inventory).all
+    reservation = Reservation.where(inventory: inventory).where(status: 'Belum Diterima').all
     render json: { status: 200, body: reservation }
   end
 
